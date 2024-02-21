@@ -1,5 +1,6 @@
 import express from "express";
 import session from "express-session";
+import path from "path";
 import "./auth.js";
 import passport from "passport";
 const app = express();
@@ -12,7 +13,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get("/", (req, res) => {
-  res.send('<a href="/auth/google">Authenticate with Google</a>');
+  res.sendFile(path.resolve("./views/index.html"));
 });
 
 app.get(
